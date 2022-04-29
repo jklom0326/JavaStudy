@@ -1,3 +1,5 @@
+package ThinkDataStructures;
+
 /**
  * @author downey
  *

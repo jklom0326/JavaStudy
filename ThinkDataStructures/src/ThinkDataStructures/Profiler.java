@@ -1,5 +1,4 @@
-
-import java.awt.Color;
+package ThinkDataStructures;
 
 import org.apache.commons.math3.stat.regression.SimpleRegression;
 import org.jfree.chart.ChartFactory;
@@ -14,6 +13,8 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
+
+import java.awt.*;
 
 /**
  * @author downey
