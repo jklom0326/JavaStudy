@@ -45,7 +45,7 @@ public class SelectionSort {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] array = {2, 5, 6, 1, 3};
+		int[] array = {2, 5, 6, 1, 3,4,7,9,8};
 		selectionSort(array);
 		System.out.println(Arrays.toString(array));
 	}
