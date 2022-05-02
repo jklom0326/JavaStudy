@@ -6,19 +6,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-/**
- * @author downey
- * @param <E>
- *
- */
 public class MyLinkedList<E> implements List<E> {
 
-	/**
-	 * Node is identical to ListNode from the example, but parameterized with T
-	 *
-	 * @author downey
-	 *
-	 */
 	private class Node {
 		public E data;
 		public Node next;
@@ -40,17 +29,11 @@ public class MyLinkedList<E> implements List<E> {
 	private int size;            // keeps track of the number of elements
 	private Node head;           // reference to the first node
 
-	/**
-	 *
-	 */
 	public MyLinkedList() {
 		head = null;
 		size = 0;
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// run a few simple tests
 		List<Integer> mll = new MyLinkedList<Integer>();
@@ -79,7 +62,13 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public void add(int index, E element) {
-		//TODO: FILL THIS IN!
+		if (index == 0) {
+			head = new Node(element, head);
+		} else {
+			Node node = getNode(index - 1);
+			node.next = new Node(element, node.next);
+		}
+		size++;
 	}
 
 	@Override
@@ -123,10 +112,6 @@ public class MyLinkedList<E> implements List<E> {
 		return node.data;
 	}
 
-	/** Returns the node at the given index.
-	 * @param index
-	 * @return
-	 */
 	private Node getNode(int index) {
 		if (index < 0 || index >= size) {
 			throw new IndexOutOfBoundsException();
@@ -140,17 +125,16 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public int indexOf(Object target) {
-		//TODO: FILL THIS IN!
+		Node node = head;
+		for (int i = 0; i < size; i++){
+			if (equals(target, node.data)) {
+				return i;
+			}
+			node = node.next;
+		}
 		return -1;
 	}
 
-	/** Checks whether an element of the array is the target.
-	 *
-	 * Handles the special case that the target is null.
-	 *
-	 * @param target
-	 * @param object
-	 */
 	private boolean equals(Object target, Object element) {
 		if (target == null) {
 			return element == null;
@@ -205,8 +189,15 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-		//TODO: FILL THIS IN!
-		return null;
+		E element = get(index);
+		if (index == 0) {
+			head = head.next;
+		} else {
+			Node node = getNode(index - 1);
+			node.next = node.next.next;
+		}
+		size--;
+		return element;
 	}
 
 	@Override

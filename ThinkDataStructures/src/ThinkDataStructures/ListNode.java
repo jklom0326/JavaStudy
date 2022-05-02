@@ -1,9 +1,5 @@
 package ThinkDataStructures;
 
-/**
- * @author downey
- *
- */
 public class ListNode {
 
 	public Object data;

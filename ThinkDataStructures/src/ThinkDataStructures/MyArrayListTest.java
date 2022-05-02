@@ -1,4 +1,5 @@
 package ThinkDataStructures;//import static org.junit.Assert.*;
+
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
 import static org.hamcrest.CoreMatchers.*;
@@ -19,10 +20,6 @@ public class MyArrayListTest {
 	protected List<Integer> mylist;
 	protected List<Integer> list;
 
-
-	/**
-	 * @throws java.lang.Exception
-	 */
 	@Before
 	public void setUp() throws Exception {
 		list = new ArrayList<Integer>();

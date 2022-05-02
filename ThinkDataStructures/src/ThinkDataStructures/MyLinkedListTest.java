@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 
-
-/**
- * @author downey
- *
- */
 public class MyLinkedListTest extends MyArrayListTest {
 
 	/**

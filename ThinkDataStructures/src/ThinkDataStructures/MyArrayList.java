@@ -6,18 +6,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-/**
- * @author downey
- * @param <T>
- *
- */
 public class MyArrayList<T> implements List<T> {
-	int size;                    // keeps track of the number of elements
-	private T[] array;           // stores the elements
+	int size;                    // 요소의 개수를 추적합니다
+	private T[] array;           // 요소를 저장합니다.
 
-	/**
-	 *
-	 */
 	@SuppressWarnings("unchecked")
 	public MyArrayList() {
 		// You can't instantiate an array of T[], but you can instantiate an
@@ -27,9 +19,6 @@ public class MyArrayList<T> implements List<T> {
 		size = 0;
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// run a few simple tests
 		MyArrayList<Integer> mal = new MyArrayList<Integer>();
@@ -44,8 +33,16 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public boolean add(T element) {
-		// TODO: FILL THIS IN!
-		return false;
+		if (size >= array.length) {
+			// 큰 배열을 만들고 요소들을 복사한다.
+			@SuppressWarnings("unchecked")
+			T[] bigger = (T[]) new Object[array.length * 2];
+			System.arraycopy(array, 0, bigger,0, array.length);
+			array = bigger;
+		}
+		array[size] = element;
+		size++;
+		return true;
 	}
 
 	@Override
@@ -110,17 +107,14 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public int indexOf(Object target) {
-		// TODO: FILL THIS IN!
+		for (int i = 0; i < size; i++){
+			if (equals(target, array[i])) {
+				return i;
+			}
+		}
 		return -1;
 	}
 
-	/** Checks whether an element of the array is the target.
-	 *
-	 * Handles the special case that the target is null.
-	 *
-	 * @param target
-	 * @param object
-	 */
 	private boolean equals(Object target, Object element) {
 		if (target == null) {
 			return element == null;
@@ -181,8 +175,12 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public T remove(int index) {
-		// TODO: FILL THIS IN!
-		return null;
+		T element = get(index);
+		for (int i = index; i < size - 1; i++){
+			array[i] = array[i + 1];
+		}
+		size--;
+		return element;
 	}
 
 	@Override
@@ -201,8 +199,9 @@ public class MyArrayList<T> implements List<T> {
 
 	@Override
 	public T set(int index, T element) {
-		// TODO: FILL THIS IN!
-		return null;
+		T old = get(index);
+		array[index] = element;
+		return old;
 	}
 
 	@Override
@@ -227,5 +226,8 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public <U> U[] toArray(U[] array) {
 		throw new UnsupportedOperationException();
+	}
+
+	private class E {
 	}
 }
