@@ -60,13 +60,7 @@ public class ProfileListAdd {
 		// TODO: FILL THIS IN!
 	}
 
-	/**
-	 * Runs the profiles and displays results.
-	 * 
-	 * @param timeable
-	 * @param startN
-	 * @param endMillis
-	 */
+
 	private static void runProfiler(String title, Profiler.Timeable timeable, int startN, int endMillis) {
 		Profiler profiler = new Profiler(title, timeable);
 		XYSeries series = profiler.timingLoop(startN, endMillis);
